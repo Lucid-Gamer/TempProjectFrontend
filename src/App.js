@@ -1,23 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { Routes , Route } from 'react-router-dom'
+import HeaderComponent from './Components/HeaderComponent';
+import FooterComponent from './Components/FooterComponent';
+import CreateEmployee from './Components/CreateEmployee';
+import HomePage from './Components/HomePage';
+import ListEmployees from './Components/ListEmployees';
+import EditEmployee from './Components/EditEmployee';
+import ListTickets from './Components/ListTickets';
+import LoginForm from './Components/LoginForm';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <HeaderComponent/>
+      <div className='container'>
+      <Routes>
+        <Route exact path='/' element={<HomePage/>}/>
+        <Route path='/add-employee' element={<CreateEmployee/>}/>
+        <Route path='/employees' element={<ListEmployees/>}/>
+        <Route path='/edit-employee/:id' element={<EditEmployee/>}/>
+        <Route exact path='/ticket/all' element={<ListTickets/>}/>
+        <Route exact path='/login' element={<LoginForm/>}/>
+      </Routes>
+      </div>
+    <FooterComponent/>
     </div>
   );
 }
